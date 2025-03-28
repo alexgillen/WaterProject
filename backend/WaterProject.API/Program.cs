@@ -13,7 +13,15 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<WaterDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("WaterConnection")));
 
-builder.Services.AddCors();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder.AllowAnyOrigin() // Allows requests from any origin
+               .AllowAnyMethod() // Allows GET, POST, PUT, etc.
+               .AllowAnyHeader(); // Allows any headers
+    });
+});
 
 var app = builder.Build();
 
@@ -24,7 +32,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors(x => x.WithOrigins("http://localhost:5174"));
+app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
 

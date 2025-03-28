@@ -1,11 +1,8 @@
 import './App.css'
-import ProjectList from './ProjectList'
+import ProjectPage from './pages/ProjectPage';
 
 function App() {
-
-  return (
-    <ProjectList />
-  )
+  return (<ProjectPage />);
 }
 
 export default App
