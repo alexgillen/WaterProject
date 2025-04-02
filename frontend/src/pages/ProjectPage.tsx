@@ -2,6 +2,7 @@ import { useState } from "react";
 import CategoryFilter from "../components/CategoryFilter";
 import ProjectList from "../components/ProjectList";
 import WelcomeBand from "../components/WelcomeBand";
+import CartSummary from "../components/CartSummary";
 
 function ProjectPage () {
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -9,9 +10,8 @@ function ProjectPage () {
     return (
         <>
             <div className='container mt-4'>
-                <div className='row bg-primary text-white'>
+                <CartSummary />
                     <WelcomeBand />
-                    </div>
                         <div className='row'>
                             <div className='col-md-3'>
                             <CategoryFilter 
